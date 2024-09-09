@@ -31,18 +31,30 @@ public interface UserMapper {
     @Update("update users set name=#{name}, sex=#{sex}, age=#{age}, phone=#{phone}, student_id=#{studentId}, id_number=#{idNumber}, college=#{college}, major=#{major} where id=#{id}")
     void updateById(UserRegisterDTO userRegisterDTO);
 
-    @Select("SELECT * FROM checks WHERE user_id = #{id} AND to_char(check_in_time, 'YYYY-MM-DD') = CURRENT_DATE ORDER BY check_in_time DESC LIMIT 1; ")
+    @Select("SELECT * FROM checks WHERE user_id = #{id} AND DATE(check_in_time) = CURDATE()  ORDER BY check_in_time DESC LIMIT 1; ")
     Check selectTodyCheck(Long id);
     @Insert("INSERT INTO checks (check_in_time, check_in_location, round_number, user_id) VALUES (#{checkInTime}, #{checkInLocation}, 1, #{userId})")
     void chenkInInsert(Check check);
-    @Select("SELECT COUNT(*) FROM checks WHERE user_id = #{id} AND to_char(check_in_time, 'YYYY-MM-DD') = CURRENT_DATE ")
+    @Select("SELECT COUNT(*) FROM checks WHERE user_id = #{id} AND DATE(check_in_time) = CURDATE() ")
     Integer chenkTodyCount(Long id);
     @Insert("INSERT INTO checks (check_in_time, check_in_location, round_number, user_id) VALUES (#{checkInTime}, #{checkInLocation}, #{roundNumber}, #{userId})")
     void chenkInInsertNoNew(Check check);
-    @Update("UPDATE checks SET check_out_time = #{check.checkOutTime}, check_out_location = #{check.checkOutLocation} WHERE user_id = #{check.userId} AND to_char(check_in_time, 'YYYY-MM-DD') = CURRENT_DATE AND id = #{id}")
+    @Update("UPDATE checks SET check_out_time = #{check.checkOutTime}, check_out_location = #{check.checkOutLocation} WHERE user_id = #{check.userId} AND DATE(check_in_time) = CURDATE() AND id = #{id}")
     void chenkUpdateNew(Check check,Integer id);
-    @Select("select EXTRACT(EPOCH FROM (check_out_time - check_in_time)) / 60.0 AS time_difference_minutes ,check_in_time,check_out_time from checks where user_id =#{id} AND to_char(check_in_time, 'YYYY-MM-DD') = CURRENT_DATE ORDER BY check_in_time DESC limit 1;")
+    @Select("SELECT \n" +
+            "    TIMESTAMPDIFF(MINUTE, check_in_time, check_out_time) AS time_difference_minutes,\n" +
+            "    check_in_time,\n" +
+            "    check_out_time\n" +
+            "FROM \n" +
+            "    checks\n" +
+            "WHERE \n" +
+            "    user_id = #{id}\n" +
+            "AND \n" +
+            "    DATE(check_in_time) = CURDATE()\n" +
+            "ORDER BY \n" +
+            "    check_in_time DESC\n" +
+            "LIMIT 1;")
     Double selectTimeD(Long id);
-    @Update("UPDATE users SET experience = experience + NVL(#{jingyan}, 0) WHERE id = #{id}")
+    @Update("UPDATE users SET experience = experience + IFNULL(#{jingyan}, 0) WHERE id = #{id}")
     void insertJingyan(Double jingyan,Long id);
 }
