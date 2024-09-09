@@ -1,0 +1,119 @@
+{
+  "groups": [
+    {
+      "name": "attend.jwt",
+      "type": "com.attend.properties.JwtProperties",
+      "sourceType": "com.attend.properties.JwtProperties"
+    },
+    {
+      "name": "attend.wechat",
+      "type": "com.attend.properties.WeChatProperties",
+      "sourceType": "com.attend.properties.WeChatProperties"
+    },
+    {
+      "name": "energy.alioss",
+      "type": "com.attend.properties.AliOssProperties",
+      "sourceType": "com.attend.properties.AliOssProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "attend.jwt.admin-secret-key",
+      "type": "java.lang.String",
+      "description": "管理端员工生成jwt令牌相关配置",
+      "sourceType": "com.attend.properties.JwtProperties"
+    },
+    {
+      "name": "attend.jwt.admin-token-name",
+      "type": "java.lang.String",
+      "sourceType": "com.attend.properties.JwtProperties"
+    },
+    {
+      "name": "attend.jwt.admin-ttl",
+      "type": "java.lang.Long",
+      "sourceType": "com.attend.properties.JwtProperties"
+    },
+    {
+      "name": "attend.jwt.user-secret-key",
+      "type": "java.lang.String",
+      "description": "用户端微信用户生成jwt令牌相关配置",
+      "sourceType": "com.attend.properties.JwtProperties"
+    },
+    {
+      "name": "attend.jwt.user-token-name",
+      "type": "java.lang.String",
+      "sourceType": "com.attend.properties.JwtProperties"
+    },
+    {
+      "name": "attend.jwt.user-ttl",
+      "type": "java.lang.Long",
+      "sourceType": "com.attend.properties.JwtProperties"
+    },
+    {
+      "name": "attend.wechat.api-v3-key",
+      "type": "java.lang.String",
+      "sourceType": "com.attend.properties.WeChatProperties"
+    },
+    {
+      "name": "attend.wechat.appid",
+      "type": "java.lang.String",
+      "sourceType": "com.attend.properties.WeChatProperties"
+    },
+    {
+      "name": "attend.wechat.mch-serial-no",
+      "type": "java.lang.String",
+      "sourceType": "com.attend.properties.WeChatProperties"
+    },
+    {
+      "name": "attend.wechat.mchid",
+      "type": "java.lang.String",
+      "sourceType": "com.attend.properties.WeChatProperties"
+    },
+    {
+      "name": "attend.wechat.notify-url",
+      "type": "java.lang.String",
+      "sourceType": "com.attend.properties.WeChatProperties"
+    },
+    {
+      "name": "attend.wechat.private-key-file-path",
+      "type": "java.lang.String",
+      "sourceType": "com.attend.properties.WeChatProperties"
+    },
+    {
+      "name": "attend.wechat.refund-notify-url",
+      "type": "java.lang.String",
+      "sourceType": "com.attend.properties.WeChatProperties"
+    },
+    {
+      "name": "attend.wechat.secret",
+      "type": "java.lang.String",
+      "sourceType": "com.attend.properties.WeChatProperties"
+    },
+    {
+      "name": "attend.wechat.we-chat-pay-cert-file-path",
+      "type": "java.lang.String",
+      "sourceType": "com.attend.properties.WeChatProperties"
+    },
+    {
+      "name": "energy.alioss.access-key-id",
+      "type": "java.lang.String",
+      "sourceType": "com.attend.properties.AliOssProperties"
+    },
+    {
+      "name": "energy.alioss.access-key-secret",
+      "type": "java.lang.String",
+      "sourceType": "com.attend.properties.AliOssProperties"
+    },
+    {
+      "name": "energy.alioss.bucket-name",
+      "type": "java.lang.String",
+      "sourceType": "com.attend.properties.AliOssProperties"
+    },
+    {
+      "name": "energy.alioss.endpoint",
+      "type": "java.lang.String",
+      "sourceType": "com.attend.properties.AliOssProperties"
+    }
+  ],
+  "hints": []
+}
